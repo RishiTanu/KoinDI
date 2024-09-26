@@ -66,4 +66,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Koin for Android, Navigation, and Compose
+    implementation("io.insert-koin:koin-android:3.2.0-beta-1")
+    implementation("io.insert-koin:koin-androidx-navigation:3.2.0-beta-1")
+    implementation("io.insert-koin:koin-androidx-compose:3.2.0-beta-1")
+    testImplementation("io.insert-koin:koin-test-junit4:3.2.0-beta-1")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.3")
+
+    // Lifecycle ViewModel for Jetpack Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
 }
