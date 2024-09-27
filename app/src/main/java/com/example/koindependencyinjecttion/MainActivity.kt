@@ -15,11 +15,18 @@ import androidx.lifecycle.ViewModel
 import com.example.koindependencyinjecttion.ui.theme.KoinDependencyInjecttionTheme
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.scope.activityRetainedScope
+import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.scope.Scope
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), AndroidScopeComponent {
 
+    override val scope: Scope by activityScope()
+   // override val scope: Scope by activityRetainedScope()
+    private val hello by inject<String>()
     //in xml
    // private val viewModel by viewModel<MainViewModel>()
    // private val api = get<MyApi>()
@@ -27,14 +34,18 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println(hello)
         enableEdgeToEdge()
         setContent {
             KoinDependencyInjecttionTheme {
                 //in compose
                val viewModel = getViewModel<MainViewModel>()
+                viewModel.doNetworkCall()
             }
         }
     }
+
+
 }
 
 @Composable

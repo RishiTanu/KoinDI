@@ -7,8 +7,7 @@ class MainViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-
-    init {
-        mainRepository.doNetworkCall()
+    fun doNetworkCall(){
+        println("print something")
     }
 }
